@@ -1,22 +1,21 @@
 <?php $this->view('partials/head', array(
-	"scripts" => array(
-		"clients/client_list.js"
-	)
+        "scripts" => array(
+                "clients/client_list.js"
+        )
 )); ?>
 
 <div class="container">
-
   <div class="row">
-
-    <?php $this->view('widgets/department_widget'); ?>
+   
+        <?php $this->view('widgets/department_widget'); ?>
   </div> <!-- /row -->
 
   <div class="row">
-
-    
+    <script>
+    $('.scroll-box').removeClass('scroll-box');
+    </script>
 
   </div> <!-- /row -->
-
 
 </div>  <!-- /container -->
 
