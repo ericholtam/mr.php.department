@@ -17,11 +17,14 @@ new department_model;
 		  <table class="table table-striped table-condensed table-bordered">
 		    <thead>
 		      <tr>
-		      	<th data-i18n="listing.computername" data-colname='machine#computer_name'>Name</th>
-		        <th data-i18n="serial" data-colname='machine#serial_number'>Serial</th>
-		        <th data-i18n="listing.username" data-colname='reportdata#long_username'>Username</th>
-		        <th data-i18n="listing.department.status" data-colname='department#status'>Status</th> 
-		        <th data-i18n="listing.department.department" data-colname='department#department'>Department</th>
+		      	<th data-i18n="listing.computername" data-colname='machine.computer_name'>Name</th>
+		        <th data-i18n="serial" data-colname='machine.serial_number'>Serial</th>
+		        <th data-i18n="listing.username" data-colname='reportdata.long_username'>Username</th>
+		        <th data-colname='machine.os_version'>OS</th>
+		        <th data-i18n="memory.memory" data-colname='machine.physical_memory'>Memory</th>
+		        <th data-i18n="listing.hardware.description" data-colname='machine.machine_desc'>Description</th>
+		        <th data-i18n="storage.total_size" data-colname='diskreport.TotalSize'>"Disk"</th>
+		        <th data-i18n="listing.department.department" data-colname='department.department'>Department</th>
 		      </tr>
 		    </thead>
 		    <tbody>
@@ -36,51 +39,53 @@ new department_model;
 
 <script type="text/javascript">
 
-$(document).on('appReady', function() {
+	$(document).on('appReady', function(e, lang) {
 
-        // Get modifiers from data attribute
-        var myCols = [], // Colnames
-            mySort = [], // Initial sort
-            hideThese = [], // Hidden columns
+		// Get column names from data attribute
+		var columnDefs = [], //Column Definitions
             col = 0; // Column counter
+		$('.table th').map(function(){
+            columnDefs.push({name: $(this).data('colname'), targets: col});
+            col++;
+		});
+		var oTable = $('.table').dataTable( {
+            ajax: {
+                url: "<?php echo url('datatables/data'); ?>",
+                type: "POST",
+                data: function( d ){
+                    // Look for 'osversion' statement
+                    if(d.search.value.match(/^\d+\.\d+(\.(\d+)?)?$/)){
+                        var search = d.search.value.split('.').map(function(x){return ('0'+x).slice(-2)}).join('');
+                        d.search.value = search;
+                    }
+                  
+                }
+            },
+            dom: mr.dt.buttonDom,
+            buttons: mr.dt.buttons,
+            columnDefs: columnDefs,
+			createdRow: function( nRow, aData, iDataIndex ) {
+				// Update name in first column to link
+				var name=$('td:eq(0)', nRow).html();
+				if(name == ''){name = "No Name"};
+				var sn=$('td:eq(1)', nRow).html();
+				var link = get_client_detail_link(name, sn, '<?php echo url(); ?>/');
+				$('td:eq(0)', nRow).html(link);
+				
+							// Format OS Version
+				var osvers = integer_to_version($('td:eq(3)', nRow).html());
+				$('td:eq(3)', nRow).html(osvers);
 
-        $('.table th').map(function(){
+                // Format filesize
+                var fs=$('td:eq(6)', nRow).html();
+                $('td:eq(6)', nRow).addClass('text-right').html(fileSize(fs, 0));
 
-              myCols.push({'mData' : $(this).data('colname')});
+                // Format filesize
+                var fs=$('td:eq(7)', nRow).html();
+                $('td:eq(7)', nRow).addClass('text-right').html(fileSize(fs, 0));
 
-              if($(this).data('sort'))
-              {
-                mySort.push([col, $(this).data('sort')])
-              }
-
-              if($(this).data('hide'))
-              {
-                hideThese.push(col);
-              }
-
-              col++
-        });
-
-        oTable = $('.table').dataTable( {
-            "sAjaxSource": "<?php echo url('datatables/data'); ?>",
-            "aaSorting": mySort,
-            "aoColumns": myCols,
-            "aoColumnDefs": [
-                { 'bVisible': false, "aTargets": hideThese }
-            ],
-            "fnCreatedRow": function( nRow, aData, iDataIndex ) {
-                // Update name in first column to link
-                var name=$('td:eq(0)', nRow).html();
-                if(name == ''){name = "No Name"};
-                var sn=$('td:eq(1)', nRow).html();
-                var link = get_client_detail_link(name, sn, '<?php echo url(); ?>/', '#tab_bluetooth-tab');
-                $('td:eq(0)', nRow).html(link);
-                
-                // Translate bool. todo function for any bool we find
-                var status=$('td:eq(7)', nRow).html();
-                status = status == 1 ? 'Yes' : 
-                (status === '0' ? 'No' : '')
-                $('td:eq(7)', nRow).html(status)
+                var mem=$('td:eq(4)', nRow).html();
+                $('td:eq(4)', nRow).html(parseInt(mem) + ' GB');
 
             }
         } );
