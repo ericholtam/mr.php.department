@@ -21,7 +21,7 @@
 									<span class="badge pull-right"><?php echo $obj->count; ?></span>
 								</a>
 							<?php else: ?>
-								<a href="<?php echo url('show/listing/department/#'.$obj->department); ?>" class="list-group-item"><?php echo $obj->department; ?>
+								<a href="<?php echo url('show/custom/department/#'.$obj->department); ?>" class="list-group-item"><?php echo $obj->department; ?>
 									<span class="badge pull-right"><?php echo $obj->count; ?></span>
 								</a>
 							<?php endif; ?>
