@@ -5,18 +5,17 @@
 )); ?>
 
 <div class="container">
+
   <div class="row">
    
         <?php $this->view('widgets/department_widget'); ?>
-  </div> <!-- /row -->
 
-  <div class="row">
-    <script>
+  </div>
+
+</div>
+
+<script> src="<?php echo conf('subdirectory'); ?>assets/js/munkireport.autoupdate.js"  
     $('.scroll-box').removeClass('scroll-box');
-    </script>
-
-  </div> <!-- /row -->
-
-</div>  <!-- /container -->
+</script>
 
 <?php $this->view('partials/foot'); ?>
