@@ -66,7 +66,7 @@ new department_model;
                             value: '/'
                         }
                     ];
- 
+
                 }
             },
             dom: mr.dt.buttonDom,
