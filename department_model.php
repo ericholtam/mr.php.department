@@ -21,6 +21,23 @@ class Department_model extends Model {
 	}
 	
 	// ------------------------------------------------------------------------
+
+     public function get_department()
+     {
+        $out = array();
+        $sql = "SELECT department, COUNT(1) AS count
+                FROM department
+                GROUP BY department
+                ORDER BY COUNT DESC";
+        
+        foreach ($this->query($sql) as $obj) {
+            if ("$obj->count" !== "0") {
+                $obj->department = $obj->department ? $obj->department : 'Unknown';
+                $out[] = $obj;
+            }
+        }
+        return $out;
+     }
 	
 	/**
 	 * Process data sent by postflight
@@ -59,3 +76,4 @@ class Department_model extends Model {
 		$this->save();
 	}
 }
+
