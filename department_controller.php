@@ -26,5 +26,23 @@ class department_controller extends Module_controller
 		echo "You've loaded the department module!";
 	}
 
+	/**
+     * Get department names for widget
+     *
+     * @return void
+     **/
+     public function get_department()
+     {
+        $obj = new View();
+
+        if (! $this->authorized()) {
+            $obj->view('json', array('msg' => array('error' => 'Not authenticated')));
+            return;
+        }
+        
+        $department = new Department_model;
+        $obj->view('json', array('msg' => $department->get_department()));
+     }
 	
 } // END class default_module
+

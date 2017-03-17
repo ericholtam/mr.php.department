@@ -1,4 +1,8 @@
 {
 	"department": "Department",
-	"status": "Status"
+	"nodepartment": "No Department",
+	"report": "Department Report",
+	"status": "Status",
+	"widgettitle": "Department"
 }
+

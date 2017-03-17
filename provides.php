@@ -14,7 +14,7 @@ return array(
         array('view' => 'departent_widget'),
     ),
     'reports' => array(
-        'department' => array('view' => 'department_report', 'i18n' => 'department.department',),
+        'department' => array('view' => 'department_report', 'i18n' => 'department.report',),
     ),
 );
 
