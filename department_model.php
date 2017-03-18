@@ -13,8 +13,9 @@ class Department_model extends Model {
 		// Create table if it does not exist
 		$this->create_table();
 		
-		if ($serial)
-			$this->retrieve_one('serial_number=?', $serial);
+        if ($serial) {
+            $this->retrieve_record($serial);
+        }
 		
 		$this->serial = $serial;
 		  
