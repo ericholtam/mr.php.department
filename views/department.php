@@ -12,7 +12,7 @@ new department_model;
 
   	<div class="col-lg-12">
 
-		  <h3><span data-i18n="listing.department.title">Department report</span> <span id="total-count" class='label label-primary'>…</span></h3>
+		  <h3><span data-i18n="department.report"></span> <span id="total-count" class='label label-primary'>…</span></h3>
 
 		  <table class="table table-striped table-condensed table-bordered">
 		    <thead>
