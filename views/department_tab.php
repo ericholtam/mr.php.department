@@ -2,7 +2,7 @@
 $department = new department_model($serial_number);
 ?>
 
-	<h2>Department</h2>
+	<h2><span data-i18n="department.department"></span></h2>
 
 		<table class="table table-striped">
 			<tbody>
