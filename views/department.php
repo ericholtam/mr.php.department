@@ -17,14 +17,14 @@ new department_model;
 		  <table class="table table-striped table-condensed table-bordered">
 		    <thead>
 		      <tr>
-		      	<th data-i18n="listing.computername" data-colname='machine.computer_name'>Name</th>
-		        <th data-i18n="serial" data-colname='machine.serial_number'>Serial</th>
-		        <th data-i18n="listing.username" data-colname='reportdata.long_username'>Username</th>
-		        <th data-colname='machine.os_version'>OS</th>
-		        <th data-i18n="memory.memory" data-colname='machine.physical_memory'>Memory</th>
-		        <th data-i18n="listing.hardware.description" data-colname='machine.machine_desc'>Description</th>
-		        <th data-i18n="storage.total_size" data-colname='diskreport.TotalSize'>"Disk"</th>
-		        <th data-i18n="listing.department.department" data-colname='department.department'>Department</th>
+		      	<th data-i18n="department.name" data-colname='machine.computer_name'></th>
+		        <th data-i18n="department" data-colname='machine.serial_number'></th>
+		        <th data-i18n="department.username" data-colname='reportdata.long_username'></th>
+		        <th data-i18n="department.os" data-colname='machine.os_version'></th>
+		        <th data-i18n="department.memory" data-colname='machine.physical_memory'></th>
+		        <th data-i18n="department.description" data-colname='machine.machine_desc'></th>
+		        <th data-i18n="department.storage_size" data-colname='diskreport.TotalSize'></th>
+		        <th data-i18n="department.department" data-colname='department.department'></th>
 		      </tr>
 		    </thead>
 		    <tbody>

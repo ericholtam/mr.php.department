@@ -1,8 +1,15 @@
 {
 	"department": "Department",
+	"description": "Description",
+	"memory": "Memory",
+	"name": "Name",
 	"nodepartment": "No Department",
+	"os": "OS",
 	"report": "Department Report",
+	"serial_number": "Serial Number",
 	"status": "Status",
+	"storage_size": "Storage Size",
+	"username": "Username",
 	"widgettitle": "Department"
 }
 
