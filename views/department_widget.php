@@ -1,5 +1,5 @@
 	<div class="col-lg-4 col-md-6">
-	<div class="panel panel-default" id="department-widget">
+	<div class="panel panel-default" id="department-widget" onclick="location.href=appUrl+'/show/listing/department/department/'">
 		<div class="panel-heading" data-container="body" >
 			<h3 class="panel-title"><i class="fa fa-building"></i> <span data-i18n="department.widgettitle"></span></h3>
 		</div>
