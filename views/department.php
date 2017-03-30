@@ -18,7 +18,7 @@ new department_model;
 		    <thead>
 		      <tr>
 		      	<th data-i18n="department.name" data-colname='machine.computer_name'></th>
-		        <th data-i18n="department" data-colname='machine.serial_number'></th>
+		        <th data-i18n="department.serial_number" data-colname='machine.serial_number'></th>
 		        <th data-i18n="department.username" data-colname='reportdata.long_username'></th>
 		        <th data-i18n="department.os" data-colname='machine.os_version'></th>
 		        <th data-i18n="department.memory" data-colname='machine.physical_memory'></th>
