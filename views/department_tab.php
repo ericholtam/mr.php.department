@@ -11,3 +11,4 @@ $department = new department_model($serial_number);
 					<td><?php echo $department->department; ?></td>
 				</tr>
 			</tbody>
+        </table>
