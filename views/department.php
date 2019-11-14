@@ -4,6 +4,7 @@
 new Machine_model;
 new Reportdata_model;
 new department_model;
+new munkireport_model;
 ?>
 
 <div class="container">
@@ -25,6 +26,7 @@ new department_model;
 		        <th data-i18n="department.description" data-colname='machine.machine_desc'></th>
 		        <th data-i18n="department.storage_size" data-colname='diskreport.TotalSize'></th>
 		        <th data-i18n="department.department" data-colname='department.department'></th>
+			<th data-i18n="munkireport.manifest.manifest" data-colname='munkireport.manifestname'></th>
 		      </tr>
 		    </thead>
 		    <tbody>
@@ -86,11 +88,11 @@ new department_model;
 
                 // Format filesize
                 var fs=$('td:eq(6)', nRow).html();
-                $('td:eq(6)', nRow).addClass('text-right').html(fileSize(fs, 0));
+                $('td:eq(6)', nRow).addClass('text-left').html(fileSize(fs, 0));
 
                 // Format filesize
                 var fs=$('td:eq(7)', nRow).html();
-                $('td:eq(7)', nRow).addClass('text-right').html(fileSize(fs, 0));
+                $('td:eq(7)', nRow).addClass('text-left').html(fileSize(fs, 0));
 
                 var mem=$('td:eq(4)', nRow).html();
                 $('td:eq(4)', nRow).html(parseInt(mem) + ' GB');
