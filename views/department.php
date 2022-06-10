@@ -26,7 +26,8 @@ new munkireport_model;
 		        <th data-i18n="department.description" data-colname='machine.machine_desc'></th>
 		        <th data-i18n="department.storage_size" data-colname='diskreport.TotalSize'></th>
 		        <th data-i18n="department.department" data-colname='department.department'></th>
-			<th data-i18n="munkireport.manifest.manifest" data-colname='munkireport.manifestname'></th>
+		        <th data-i18n="munkireport.manifest.manifest" data-colname='munkireport.manifestname'></th>
+		        <th data-colname='reportdata.timestamp'>Check-in</th>
 		      </tr>
 		    </thead>
 		    <tbody>
@@ -96,6 +97,11 @@ new munkireport_model;
 
                 var mem=$('td:eq(4)', nRow).html();
                 $('td:eq(4)', nRow).html(parseInt(mem) + ' GB');
+
+				// Format date
+				var checkin = parseInt($('td:eq(9)', nRow).html());
+				var date = new Date(checkin * 1000);
+				$('td:eq(9)', nRow).html(moment(date).fromNow());
 
             }
         } );
